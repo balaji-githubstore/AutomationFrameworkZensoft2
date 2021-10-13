@@ -14,7 +14,8 @@ namespace Zensoft.OpenErmApplication.Pages
         private static By _loginLocator = By.XPath("//button[@type='submit']");
         private static By _appDescLocator = By.XPath("//*[contains(text(),'most')]");
         private static By _errorLocator = By.XPath("//div[contains(text(),'Invalid')]");
-
+        
+        //Enter Username
         public static void EnterUsername(IWebDriver driver, string username)
         {
             driver.FindElement(_usernameLocator).SendKeys(username);
