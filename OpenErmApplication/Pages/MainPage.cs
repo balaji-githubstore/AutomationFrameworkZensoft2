@@ -21,6 +21,7 @@ namespace Zensoft.OpenErmApplication.Pages
             driver.FindElement(_calendarLocator).Click();
         }
 
+        //get main page title
         public static string GetMainPageTitle(IWebDriver driver)
         {
             return driver.Title.Trim();

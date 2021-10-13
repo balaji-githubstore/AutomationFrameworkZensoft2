@@ -21,10 +21,13 @@ namespace Zensoft.OpenErmApplication.Pages
             driver.FindElement(_usernameLocator).SendKeys(username);
         }
 
+        //enter password
         public static void EnterPassword(IWebDriver driver, string password)
         {
             driver.FindElement(_passwordLocator).SendKeys(password);
         }
+
+        //select language
         public static void SelectLanguageByText(IWebDriver driver, string language)
         {
             SelectElement selectLanguage = new SelectElement(driver.FindElement(_languageLocator));
