@@ -9,6 +9,7 @@ namespace Zensoft.OpenErmApplication.Pages
     class MainPage
     {
         private static By _calendarLocator = By.XPath("//div[text()='Calendar']");
+        private static By _AboutLocator = By.XPath("//div[text()='About']");
 
         public static void WaitForPresenceOfCalendar(IWebDriver driver)
         {
@@ -25,6 +26,11 @@ namespace Zensoft.OpenErmApplication.Pages
         public static string GetMainPageTitle(IWebDriver driver)
         {
             return driver.Title.Trim();
+        }
+
+        public static void ClickOnAbout(IWebDriver driver)
+        {
+            driver.FindElement(_AboutLocator).Click();
         }
     }
 }
