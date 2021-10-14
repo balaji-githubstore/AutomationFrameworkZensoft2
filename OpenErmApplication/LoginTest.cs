@@ -15,17 +15,16 @@ namespace Zensoft.OpenErmApplication
     {
         //admin12,pass12,Dutch,Invalid username or password
         //jack,jack123,Dutch,Invalid username or password
-
-        [Test]    
-        public void InvalidCredentialTest()
+        [Test,TestCaseSource(typeof(TestCaseSourceUtils), "InvalidCredentialData")]    
+        public void InvalidCredentialTest(string username,string password,string language,string expectedValue)
         {
-            LoginPage.EnterUsername(driver, "bala");
-            LoginPage.EnterPassword(driver, "king123");
-            LoginPage.SelectLanguageByText(driver, "English (Indian)");
+            LoginPage.EnterUsername(driver, username);
+            LoginPage.EnterPassword(driver, password);
+            LoginPage.SelectLanguageByText(driver, language);
             LoginPage.ClickOnLogin(driver);
             string actualValue = LoginPage.GetInvalidErrorMessage(driver);
            
-            Assert.AreEqual("Invalid username or password", actualValue);
+            Assert.AreEqual(expectedValue, actualValue);
         }
 
         //[TestCase("admin", "pass", "English (Indian)", "OpenEMR")]
