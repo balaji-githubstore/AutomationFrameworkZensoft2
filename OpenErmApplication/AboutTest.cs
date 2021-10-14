@@ -7,7 +7,7 @@ using System.Text;
 using Zensoft.OpenErmApplication.Pages;
 using Zensoft.OpenErmApplication.Base;
 
-namespace ZenSoft.OpenErmApplication
+namespace Zensoft.OpenErmApplication
 {
     class AboutTest : WebDriverWrapper
     {

@@ -7,12 +7,15 @@ using System.Collections.Generic;
 using System.Text;
 using Zensoft.OpenErmApplication.Pages;
 using Zensoft.OpenErmApplication.Base;
+using Zensoft.OpenErmApplication.Utilities;
 
 namespace Zensoft.OpenErmApplication
 {
     class LoginTest : WebDriverWrapper
     {
-        
+        //admin12,pass12,Dutch,Invalid username or password
+        //jack,jack123,Dutch,Invalid username or password
+
         [Test]    
         public void InvalidCredentialTest()
         {
@@ -25,9 +28,9 @@ namespace Zensoft.OpenErmApplication
             Assert.AreEqual("Invalid username or password", actualValue);
         }
 
-        [TestCase("admin", "pass", "English (Indian)", "OpenEMR")]
-        [TestCase("physician", "physician", "Dutch", "OpenEMR")]
-        [Test]
+        //[TestCase("admin", "pass", "English (Indian)", "OpenEMR")]
+        //[TestCase("physician", "physician", "Dutch", "OpenEMR")]
+        [Test,TestCaseSource(typeof(TestCaseSourceUtils), "ValidCredentialData")]
         public void ValidCredentialTest(string username,string password,string language,string expectedValue)
         {
             LoginPage.EnterUsername(driver, username);
