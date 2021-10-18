@@ -5,8 +5,8 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Zensoft.AutomationWrapper.Base;
 using Zensoft.OpenErmApplication.Pages;
-using Zensoft.OpenErmApplication.Base;
 using Zensoft.OpenErmApplication.Utilities;
 
 namespace Zensoft.OpenErmApplication

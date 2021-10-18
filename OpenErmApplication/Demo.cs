@@ -10,7 +10,7 @@ namespace OpenErmApplication
 {
     class Demo
     {
-        [Test]
+        //[Test]
         public void JsonRead()
         {
             StreamReader reader = new StreamReader(@"D:\B-Mine\Company\Company\Zensoft\OpenErmApplication\OpenErmApplication\TestData\data.json");
@@ -33,7 +33,7 @@ namespace OpenErmApplication
         //    b = 30;
         //}
 
-        [Test]
+        //[Test]
         public void ExcelRead()
         {
             //b = 36;
@@ -103,7 +103,7 @@ namespace OpenErmApplication
         //peter,peter123 --> temp2
         //mark,makr123 --> temp3
         //king,king123
-        [Test, TestCaseSource("ValidData")]
+        //[Test, TestCaseSource("ValidData")]
         public void ValidTest(string username, string password)
         {
 
