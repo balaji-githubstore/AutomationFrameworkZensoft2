@@ -6,23 +6,24 @@ using System.Collections.Generic;
 using System.Text;
 using Zensoft.OpenErmApplication.Pages;
 using Zensoft.OpenErmApplication.Base;
+using Zensoft.OpenErmApplication.Utilities;
 
 namespace Zensoft.OpenErmApplication
 {
     class AboutTest : WebDriverWrapper
     {
-        [Test]
-        public void CheckHeaderAndVersionTest()
+        [Test,TestCaseSource(typeof(TestCaseSourceUtils), "CheckHeaderAndVersionData")]
+        public void CheckHeaderAndVersionTest(string username,string password,string language,string expectedHeader,string expectedVersion)
         {
-            LoginPage.EnterUsername(driver, "admin");
-            LoginPage.EnterPassword(driver, "pass");
+            LoginPage.EnterUsername(driver, username);
+            LoginPage.EnterPassword(driver, password);
             LoginPage.ClickOnLogin(driver);
             MainPage.ClickOnAbout(driver);
 
-            Assert.AreEqual("About OpenEMR", AboutPage.GetHeader(driver));
-            Assert.AreEqual("Version Number: v6.0.0 (2)", AboutPage.GetVersion(driver));
+            Assert.AreEqual(expectedHeader, AboutPage.GetHeader(driver));
+            Assert.AreEqual(expectedVersion, AboutPage.GetVersion(driver));
 
-            Assert.True(AboutPage.GetVersion(driver).Contains("v7.0.0"),"Assertion on v6.0.0");
+            Assert.True(AboutPage.GetVersion(driver).Contains(expectedVersion));
 
         }
     }

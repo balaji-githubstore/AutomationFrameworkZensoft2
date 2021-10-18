@@ -9,10 +9,19 @@ namespace OpenErmApplication
 {
     class Demo
     {
+        //public const double pi = 3.14;
+        //public readonly int b = 20;
+
+        //public Demo()
+        //{
+        //    a = 20;
+        //    b = 30;
+        //}
+
         [Test]
         public void ExcelRead()
         {
-
+            //b = 36;
             using (XLWorkbook book = new XLWorkbook(@"D:\B-Mine\Company\Company\Zensoft\OpenErmApplication\OpenErmApplication\TestData\OpenEmrTestData.xlsx"))
             {
                 var sheet = book.Worksheet("invalidCredentialData");

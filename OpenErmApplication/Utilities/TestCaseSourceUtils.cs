@@ -6,27 +6,37 @@ namespace Zensoft.OpenErmApplication.Utilities
 {
     class TestCaseSourceUtils
     {
-        public static object[] InvalidCredentialData()
+        public static object[] CheckHeaderAndVersionData()
         {
-            object[] temp1 = new object[4];
-            temp1[0] = "admin12";
-            temp1[1] = "pass12";
-            temp1[2] = "English (Indian)";
-            temp1[3] = "Invalid username or password";
-
-            object[] temp2 = new object[4];
-            temp2[0] = "physician12";
-            temp2[1] = "physician12";
-            temp2[2] = "Dutch";
-            temp2[3] = "Invalid username or password";
-
-            object[] main = new object[2];
-            main[0] = temp1;
-            main[1] = temp2;
-
-
+            object[] main = ExcelUtlis.ConvertSheetIntoObjectArray(@"D:\B-Mine\Company\Company\Zensoft\OpenErmApplication\OpenErmApplication\TestData\OpenEmrTestData.xlsx", "CheckHeaderAndVersionData");
             return main;
         }
+        public static object[] InvalidCredentialData()
+        {
+            object[] main = ExcelUtlis.ConvertSheetIntoObjectArray(@"D:\B-Mine\Company\Company\Zensoft\OpenErmApplication\OpenErmApplication\TestData\OpenEmrTestData.xlsx", "InvalidCredentialData");
+            return main;
+        }
+        //public static object[] InvalidCredentialData()
+        //{
+        //    object[] temp1 = new object[4];
+        //    temp1[0] = "admin12";
+        //    temp1[1] = "pass12";
+        //    temp1[2] = "English (Indian)";
+        //    temp1[3] = "Invalid username or password";
+
+        //    object[] temp2 = new object[4];
+        //    temp2[0] = "physician12";
+        //    temp2[1] = "physician12";
+        //    temp2[2] = "Dutch";
+        //    temp2[3] = "Invalid username or password";
+
+        //    object[] main = new object[2];
+        //    main[0] = temp1;
+        //    main[1] = temp2;
+
+
+        //    return main;
+        //}
 
         public static object[] ValidCredentialData()
         {
