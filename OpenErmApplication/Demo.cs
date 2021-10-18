@@ -12,27 +12,33 @@ namespace OpenErmApplication
         [Test]
         public void ExcelRead()
         {
-            XLWorkbook book = new XLWorkbook(@"D:\B-Mine\Company\Company\Zensoft\OpenErmApplication\OpenErmApplication\TestData\OpenEmrTestData.xlsx");
 
-            var sheet = book.Worksheet("invalidCredentialData");
+            using (XLWorkbook book = new XLWorkbook(@"D:\B-Mine\Company\Company\Zensoft\OpenErmApplication\OpenErmApplication\TestData\OpenEmrTestData.xlsx"))
+            {
+                var sheet = book.Worksheet("invalidCredentialData");
 
-            var range = sheet.RangeUsed();
+                var range = sheet.RangeUsed();
 
-            int rowCount = range.RowCount();
-            int colCount = range.ColumnCount();
+                int rowCount = range.RowCount();
+                int colCount = range.ColumnCount();
 
-            Console.WriteLine(rowCount);
-            Console.WriteLine(colCount);
+                Console.WriteLine(rowCount);
+                Console.WriteLine(colCount);
 
-            string value = range.Cell(1, 2).GetString();
-            Console.WriteLine(value);
+                object[] main = new object[rowCount - 1];
 
-
-            //print all the cell value 
-            //based on the row count --> number of temp object (parameter - number of columns) 
-            //main[] size --> number of rows
-
-            book.Dispose();
+                for (int r = 2; r <= rowCount; r++)
+                {
+                    object[] temp = new object[colCount];
+                    for (int c = 1; c <= colCount; c++)
+                    {
+                        string value = range.Cell(r, c).GetString();
+                        Console.WriteLine(value);
+                        temp[c - 1] = value;
+                    }
+                    main[r - 2] = temp;
+                }
+            }
         }
 
 
