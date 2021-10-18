@@ -14,7 +14,6 @@ namespace Zensoft.OpenErmApplication
     class LoginTest : WebDriverWrapper
     {
 
-
         //admin12,pass12,Dutch,Invalid username or password
         //jack,jack123,Dutch,Invalid username or password
         [Test, TestCaseSource(typeof(TestCaseSourceUtils), "InvalidCredentialData")]

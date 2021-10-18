@@ -3,12 +3,27 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ClosedXML.Excel;
-
+using System.IO;
+using Newtonsoft.Json;
 
 namespace OpenErmApplication
 {
     class Demo
     {
+        [Test]
+        public void JsonRead()
+        {
+            StreamReader reader = new StreamReader(@"D:\B-Mine\Company\Company\Zensoft\OpenErmApplication\OpenErmApplication\TestData\data.json");
+            string text = reader.ReadToEnd();
+            Console.WriteLine(text);
+
+            dynamic json = JsonConvert.DeserializeObject(text);
+            string value = Convert.ToString(json["url"]);
+            Console.WriteLine(value);
+        }
+
+
+
         //public const double pi = 3.14;
         //public readonly int b = 20;
 
