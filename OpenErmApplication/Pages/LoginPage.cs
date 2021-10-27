@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Zensoft.OpenErmApplication.Pages
 {
-    class LoginPage : PageWrapper
+    class LoginPage //: PageWrapper
     {
         private By _usernameLocator = By.Id("authUser");
         private By _passwordLocator = By.Id("clearPass");
@@ -16,22 +16,24 @@ namespace Zensoft.OpenErmApplication.Pages
         private By _appDescLocator = By.XPath("//*[contains(text(),'most')]");
         private By _errorLocator = By.XPath("//div[contains(text(),'Invalid')]");
 
-        public LoginPage(IWebDriver driver):base(driver)
+        private IWebDriver driver;
+        public LoginPage(IWebDriver driver)
         {
-            
+            this.driver = driver;
         }
 
         //Enter Username
         public void EnterUsername(string username)
         {
-            //driver.FindElement(_usernameLocator).SendKeys(username);
-            TypeUsingLocator(_usernameLocator, username);
+            driver.FindElement(_usernameLocator).SendKeys(username);
+            //TypeUsingLocator(_usernameLocator, username);
         }
 
         //enter password
         public void EnterPassword(string password)
         {
-            TypeUsingLocator(_passwordLocator, password);
+            driver.FindElement(_passwordLocator).SendKeys(password);
+            //TypeUsingLocator(_passwordLocator, password);
         }
 
         //select language
@@ -42,7 +44,7 @@ namespace Zensoft.OpenErmApplication.Pages
         }
         public void ClickOnLogin()
         {
-            ClickUsingLocator(_loginLocator);
+            driver.FindElement(_loginLocator).Click();
         }
 
         public string GetApplicationDescription()
