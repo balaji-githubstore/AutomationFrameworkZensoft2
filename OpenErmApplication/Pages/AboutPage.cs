@@ -7,31 +7,36 @@ namespace Zensoft.OpenErmApplication.Pages
 {
     class AboutPage
     {
-        private static By _headerLocator = By.TagName("h1");
-        private static By _versionrLocator = By.TagName("h4");
-        private static string mscFrameName = "msc";
+        private By _headerLocator = By.TagName("h1");
+        private By _versionrLocator = By.TagName("h4");
+        private string mscFrameName = "msc";
+        private IWebDriver driver;
+        public AboutPage(IWebDriver driver)
+        {
+            this.driver = driver;
+        }
 
-        public static void SwitchToMscFrame(IWebDriver driver)
+        public void SwitchToMscFrame()
         {
             driver.SwitchTo().Frame(mscFrameName);
         }
-        public static void SwitchOutOfFrame(IWebDriver driver)
+        public void SwitchOutOfFrame()
         {
             driver.SwitchTo().DefaultContent();
         }
-        public static string GetHeader(IWebDriver driver)
+        public string GetHeader()
         {
-            SwitchToMscFrame(driver);
+            SwitchToMscFrame();
             string h1= driver.FindElement(_headerLocator).Text;
-            SwitchOutOfFrame(driver);
+            SwitchOutOfFrame();
             return h1;
         }
 
-        public static string GetVersion(IWebDriver driver)
+        public string GetVersion()
         {
-            SwitchToMscFrame(driver);
+            SwitchToMscFrame();
             string version = driver.FindElement(_versionrLocator).Text;
-            SwitchOutOfFrame(driver);
+            SwitchOutOfFrame();
             return version;
         }
     }
