@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Zensoft.OpenErmApplication.Base;
+using Zensoft.AutomationWrapper.Base;
 
 namespace Zensoft.OpenErmApplication
 {

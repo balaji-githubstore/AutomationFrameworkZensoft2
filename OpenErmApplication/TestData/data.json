@@ -1,4 +1,5 @@
 {
   "browser": "ch",
-  "url": "https://demo.openemr.io/a/openemr/index.php"
+  "url": "https://demo.openemr.io/a/openemr/index.php",
+  "driver": "C:\\Components"
 }
