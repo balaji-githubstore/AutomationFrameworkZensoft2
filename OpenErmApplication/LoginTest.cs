@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using AventStack.ExtentReports;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -22,12 +23,16 @@ namespace Zensoft.OpenErmApplication
             LoginPage login = new LoginPage(driver);
 
             login.EnterUsername(username);
+            test.Log(Status.Info, "entered username " + username);
             login.EnterPassword(password);
+            test.Log(Status.Info, "entered password");
             login.SelectLanguageByText(language);
+            test.Log(Status.Info, "Selected language "+language);
             login.ClickOnLogin();
             string actualValue = login.GetInvalidErrorMessage();
            
             Assert.AreEqual(expectedValue, actualValue);
+            test.Log(Status.Info, "Compeleted the validation - actual value is " + actualValue);
         }
 
         //[TestCase("admin", "pass", "English (Indian)", "OpenEMR")]

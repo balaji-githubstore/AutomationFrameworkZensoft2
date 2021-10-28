@@ -15,16 +15,17 @@ namespace Zensoft.OpenErmApplication
         [Test,TestCaseSource(typeof(TestCaseSourceUtils), "CheckHeaderAndVersionData")]
         public void CheckHeaderAndVersionTest(string username,string password,string language,string expectedHeader,string expectedVersion)
         {
-            //LoginPage login = new LoginPage();
-            //login.EnterUsername(driver, username);
-            //login.EnterPassword(driver, password);
-            //login.SelectLanguageByText(driver, language);
-            //login.ClickOnLogin(driver);
+            LoginPage login = new LoginPage(driver);
+            login.EnterUsername(username);
+            login.EnterPassword(password);
+            login.SelectLanguageByText(language);
+            login.ClickOnLogin();
 
-            //Assert.AreEqual(expectedHeader, AboutPage.GetHeader(driver));
-            //Assert.AreEqual(expectedVersion, AboutPage.GetVersion(driver));
+            AboutPage about = new AboutPage(driver);
+            Assert.AreEqual(expectedHeader, about.GetHeader());
+            Assert.AreEqual(expectedVersion, about.GetVersion());
 
-            //Assert.True(AboutPage.GetVersion(driver).Contains(expectedVersion));
+            Assert.True(about.GetVersion().Contains(expectedVersion));
 
         }
     }
